@@ -1,6 +1,17 @@
-import React from "react";
-import { View,Text, TextInput} from "react-native";
+import React, {useState}from "react";
+import { View,Text, TextInput, Button} from "react-native";
+
  export default function Form(){
+
+    const[height,setHeight]=useState(null)
+    const[weight,setWeight]=useState(null)
+    const[messageImc,setMessageImc]=useState("Preencha seu peso e altura");
+    const[imc,setImc]=useState(null)
+    const[textButton,seTextButton]=useState("Calcular IMC")
+
+
+    
+
     return (
         <View>
             <View>
@@ -11,11 +22,18 @@ import { View,Text, TextInput} from "react-native";
            />
 
 
+
            <Text>Peso</Text>
            <TextInput
             placeholder="Ex.85.766"
            keyboardType="numeric"
            />
+
+         <Button
+         title={textButton}
+         
+         />
+         
             </View>
         </View>
     );
