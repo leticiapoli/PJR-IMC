@@ -9,6 +9,9 @@ import { View,Text, TextInput, Button} from "react-native";
     const[imc,setImc]=useState(null)
     const[textButton,seTextButton]=useState("Calcular IMC")
 
+    function imcCalculator(){
+        return setImc((weight/(height*height)).toFixed(2))
+    }
 
     
 
@@ -25,7 +28,7 @@ import { View,Text, TextInput, Button} from "react-native";
 
            <Text>Peso</Text>
            <TextInput
-            placeholder="Ex.85.766"
+            placeholder="Ex.85.76"
            keyboardType="numeric"
            />
 
