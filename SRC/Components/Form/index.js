@@ -5,9 +5,28 @@ import { View,Text, TextInput, Button} from "react-native";
 
     const[height,setHeight]=useState(null)
     const[weight,setWeight]=useState(null)
-    const[messageImc,setMessageImc]=useState("Preencha seu peso e altura");
+    const[messageImc,setMessageImc]=useState("Informe seu peso e altura");
     const[imc,setImc]=useState(null)
-    const[textButton,seTextButton]=useState("Calcular IMC")
+    const[textButton,seTextButton]=useState("IMC")
+
+    function imcCalculator(){
+        return setImc((weight/(height*height)).toFixed(2))
+    }
+
+    function validationImc(){
+    if (weight!= null && height != null ){
+        imcCalculator()
+        setHeight(null)
+        setWeight(null)
+        setMessageImc("SEU IMC É =")
+        setTextButton("CALCULAR NOVAMENTE")
+        return
+    }
+
+        setImc(null)
+        setTextButton("Calcular")
+        setMessageImc("Preencha peso e altura")
+    }
 
     function imcCalculator(){
         return setImc((weight/(height*height)).toFixed(2))
