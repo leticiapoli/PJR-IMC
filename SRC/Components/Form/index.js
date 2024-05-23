@@ -1,5 +1,6 @@
 import React, {useState}from "react";
 import { View,Text, TextInput, Button} from "react-native";
+import ResultImc from "./ResultImc";
 
  export default function Form(){
 
@@ -7,7 +8,7 @@ import { View,Text, TextInput, Button} from "react-native";
     const[weight,setWeight]=useState(null)
     const[messageImc,setMessageImc]=useState("Informe seu peso e altura");
     const[imc,setImc]=useState(null)
-    const[textButton,seTextButton]=useState("IMC")
+    const[textButton,setTextButton]=useState("IMC")
 
     function imcCalculator(){
         return setImc((weight/(height*height)).toFixed(2))
@@ -39,6 +40,8 @@ import { View,Text, TextInput, Button} from "react-native";
             <View>
                 <Text>Altura</Text>
            <TextInput
+           onChangeText={setHeight}
+           value={height}
             placeholder="Ex.1.75"
            keyboardType="numeric"
            />
@@ -47,16 +50,24 @@ import { View,Text, TextInput, Button} from "react-native";
 
            <Text>Peso</Text>
            <TextInput
+           onChangeText={setWeight}
+           value={weight}
             placeholder="Ex.85.76"
            keyboardType="numeric"
            />
 
          <Button
+         onPress={()=> validationImc ()}
          title={textButton}
          
          />
          
             </View>
+
+            <ResultImc
+              messageResultImc = {messageImc}
+              ResultImc = {imc}
+            />
         </View>
     );
  }
